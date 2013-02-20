@@ -1,0 +1,309 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+/*
+
+CSS RESET
+	  
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+
+CUSTOM CSS
+
+*/
+
+* { padding: 0; margin: 0; }
+
+ul#show_roles{
+	list-style: disc inside
+}
+
+body {
+  font-family: "Times New Roman", Times, Arial, serif;
+  color:#000;
+  background-color:#000;
+  background-image:url('/assets/escheresque_ste.png');
+}
+
+div#page_wrapper {
+height:800px;
+width:980px;
+margin:10px auto;
+}
+
+div#header {
+height:112px;
+width:980px;
+background-color:#396a92;
+float:left;
+clear:both;
+border-radius: 15px 15px 0 0;
+-moz-border-radius: 15px 15px 0 0;
+-webkit-border-radius: 15px 15px 0 0;
+}
+
+div#nav {
+	height:40px;
+	width:980px;
+	float:left;
+	clear:both;
+	background-color:#9ab4cb;
+}
+
+div[id^="flash"]{
+	height:15px;
+	width:480px;
+	background-color:#000;	
+	font-weight:400;
+	font-size:12pt;		
+	padding: 5px;
+}
+
+div#flash_notice{
+	color:#fff;	
+	float:left;
+	clear:left;
+	text-align:left;
+}
+
+div#flash_error{
+	color:#ff0000;
+	float:left;
+	clear:left;
+	text-align:left;
+}
+
+div#flash_top{
+	color:#fff;	
+	float:left;
+	clear:right;
+	text-align:right;
+}
+
+div#flash_bottom{
+	color:#ff0000;
+	float:left;
+	clear:right;
+	text-align:right;
+}
+div#content {
+	height:538px;
+	width:960px;
+	background-color:#ecedf2;
+	float:left;
+	clear:both;
+	padding:10px;
+}
+
+div#footer {
+	height:40px;
+	width:980px;
+	text-align:left;
+	float:left;
+	clear:both;
+	background-color:#396a92;
+	color:#000;
+	border-radius:0 0 15px 15px;
+	-moz-border-radius: 0 0 15px 15px;
+	-webkit-border-radius: 0 0 15px 15px;
+}
+
+/************************
+Navigation
+************************/
+
+div#nav li {
+	display:inline;
+	margin:0;
+}
+
+div#nav li a:link, div#nav li a:visited {
+	font-weight:bold;
+	color:#000;
+	background-color:#396a92;
+	text-align:center;
+	padding:6px;
+	text-decoration:none;
+	text-transform:uppercase;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+div#nav li a:hover,div#nav li a:active{
+	color:#fff;
+}
+
+div#nav ul {
+	margin:4px 5px;
+	padding:0;
+	background-color:#9ab4cb;
+	list-style-type:none;
+	padding-top:6px;
+	padding-bottom:6px;
+}
+
+div#title{
+	font-size:40pt;
+	float:left;
+	height:67px;
+	width:100%;
+	text-align:center;
+	padding-top:45px;
+	color:#000;
+	font-weight:500;
+	font-family: impact,  sans-serif;
+
+}
+
+/************************
+Footer
+************************/
+
+div#footer .copyright {
+font-family:arial;
+font-size:10pt;
+font-style:italic;
+font-weight:900;
+float:left;
+padding:12px 20px 0;
+}
+
+div#footer .foot {
+font-size:10pt;
+float:left;
+padding:10px 20px 0;
+text-decoration:underline;
+}
+
+div#sidebar {
+    float: right;    
+    color: #000;
+    border: 2px solid #396a92;
+    margin: 20px 20px 0px 0px;
+    padding: 10px;
+    min-height: 150px;
+    width: 200px;
+    display: inline;
+    background-color: #9ab4cb;
+}
+
+div#sidebar .header{
+	margin:5px 0;
+	font-weight:600;
+	width:100%;
+	text-align:center;
+}
+
+div#home{
+	height:256px;
+	width:340px;
+	margin: 100px auto;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	overflow: hidden;
+}
+
+textarea {
+	height:75px;
+    width: 200px;
+}
+
+/** Tables **/
+table {
+	border-right:0;
+	clear: both;
+	color: #333;
+	margin-bottom: 10px;
+	width: 100%;
+}
+th {
+	border:0;
+	border-bottom:2px solid #555;
+	text-align: left;
+	padding:4px;
+}
+th a {
+	display: block;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+th a.asc:after {
+	content: ' ?';
+}
+th a.desc:after {
+	content: ' ?';
+}
+table tr td {
+	padding: 6px;
+	text-align: left;
+	vertical-align: top;
+	border-bottom:1px solid #ddd;
+}
+table tr:nth-child(even) {
+	background: #f9f9f9;
+}
+td.actions {
+	text-align: center;
+	white-space: nowrap;
+}
+table td.actions a {
+	margin: 0px 6px;
+	padding:2px 5px;
+}

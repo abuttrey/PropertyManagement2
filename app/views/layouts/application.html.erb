@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
+    <title>Property Management</title>
+      <%= stylesheet_link_tag    "application", :media => "all" %>
+      <%= javascript_include_tag "application" %>
+      <%= csrf_meta_tags %>
+</head>
+<body>
+    <div id="page_wrapper">
+        <!-- header --> 
+        <div id="header">
+         
+          
+          <div id="title">
+            Property Management
+          </div>
+         
+        </div><!-- end header -->
+        <!-- nav div -->
+        <div id="nav"> <!-- Navigation Div -->
+            <ul>  
+            	<li><%= link_to 'Home', root_path %></li>
+            	<% if current_user %>
+	            	<li><%= link_to 'Edit Profile', edit_profile_path(:current) %></li>
+              		<li><%= link_to 'Logout', logout_path %></li>              	
+	            <% else %>	 
+              		<li><%= link_to 'Register', register_path %></li>
+              		<li><%= link_to 'Login', login_path %></li>
+              	<% end %>              
+              	<li><%= link_to 'Users', users_path %></li>
+            </ul>           
+        </div> <!-- end of nav div --> 
+        <div id="flash_error"><%= flash[:error] %></div>
+        <div id="flash_top">
+        	<%= current_user.nil? ?  "" : "Hi #{current_user.username}" %> 
+         </div>
+        <div id="flash_notice"><%= flash[:notice] %></div>
+        <div id="flash_bottom"></div>     
+        <!-- content div -->
+        <div id="content">
+            
+               <%= yield %>
+            
+        
+        </div><!-- end content div -->   
+        <!-- footer div -->
+        <div id="footer">
+            <span class="copyright">Copyright 2013 Property Management, Inc.</span>
+			<div class="foot">Privacy Policy</div>
+			<div class="foot">Legal</div>
+        </div><!-- end of footer div -->
+    </div> <!-- end of page wrapper -->
+</body>
+</html>
