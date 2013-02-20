@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :username, :crypted_password, :password_confirmation, :role_ids
+  attr_accessible :email, :password, :username, :crypted_password, :password_confirmation, :role_ids, :lease_ids
   
   #auth_logic
   acts_as_authentic
