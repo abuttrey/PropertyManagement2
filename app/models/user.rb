@@ -19,9 +19,7 @@ class User < ActiveRecord::Base
   has_many :submittedreports, :class_name => 'RepairRequest'
   has_many :approvedreports, :class_name => 'RepairRequest'
   
-  def setup_default_role_for_new_users
-    if self.roles.empty?
-      self.roles << Role.first
-    end
+  def setup_default_role_for_new_users    
+      self.roles << Role.where("name='Renter'")
   end
 end

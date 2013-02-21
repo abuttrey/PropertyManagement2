@@ -27,7 +27,7 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
-  </div>
+  </div> 
   <% unless current_user.nil? %> <!-- if user logged in -->
 	  <% if current_user.has_role?(:manager)  %><!-- if  logged in user is manager show checkboxes -->
 			  <div class="field">
@@ -39,16 +39,8 @@
 				    </div>			  
 			  	<% end %><!--end do loop -->
 			  </div>
-		<% end %><!--end if  logged in user ia manager -->
-  <% else %> <!-- end if user logged in -->
-  	<!-- <% if @user.roles.empty? %> -->
-  		<% var = Role.find(1) %>		
-  		<% @user.roles << var  %>
-  	<!-- <% end %> -->
-  <% end %>  
-  
-  
-  
+		<% end %><!--end if  logged in user is manager -->
+  <% end %>  <!-- if user logged in -->  
   <div class="actions">
     <%= f.submit %>
   </div>
