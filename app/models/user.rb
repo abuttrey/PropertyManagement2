@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  
   attr_accessible :email, :password, :username, :crypted_password, :password_confirmation, :role_ids, :lease_ids
   
   #auth_logic
@@ -13,4 +14,6 @@ class User < ActiveRecord::Base
   belongs_to :lease
   has_many :submittedreports, :class_name => 'RepairRequest'
   has_many :approvedreports, :class_name => 'RepairRequest'
+  
+  accepts_nested_attributes_for :roles
 end

@@ -28,23 +28,26 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
-  <% if can? :manage, @user %>
-		  <div class="field">
-		    <%= f.label :roles %><br />
-		    <% Role.find(:all).each do |r| %>
-		    <div>
-		    	<%= check_box_tag "user[role_ids][]", r.id, @user.roles.include?(r) %>
-		    	<%= r.name%>    	
-		    </div>
-		    <% end %>
-		  </div>
-  <% else %>
-  	<!-- <% if @user.roles.empty? %> -->		
-  		<% @user.roles << Role.first  %>
+  <% unless current_user.nil? %> <!-- if user logged in -->
+	  <% if current_user.has_role?(:manager)  %><!-- if  logged in user is manager show checkboxes -->
+			  <div class="field">
+			    <%= f.label :roles %><br />
+			    <% Role.find(:all).each do |r| %>
+				    <div>
+				    	<%= check_box_tag "user[role_ids][]", r.id, @user.roles.include?(r) %>
+				    	<%= r.name%>    	
+				    </div>			  
+			  	<% end %><!--end do loop -->
+			  </div>
+		<% end %><!--end if  logged in user ia manager -->
+  <% else %> <!-- end if user logged in -->
+  	<!-- <% if @user.roles.empty? %> -->
+  		<% var = Role.find(1) %>		
+  		<% @user.roles << var  %>
   	<!-- <% end %> -->
   <% end %>  
   
-  <% logger.debug "@user: #{@user.attributes.inspect}" %>
+  
   
   <div class="actions">
     <%= f.submit %>
