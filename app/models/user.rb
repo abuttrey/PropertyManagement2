@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   
   attr_accessible :email, :password, :username, :crypted_password, :password_confirmation, :role_ids, :lease_ids
   
+  before_create :setup_default_role_for_new_users
+
+  #private
+
   #auth_logic
   acts_as_authentic
   
@@ -15,5 +19,9 @@ class User < ActiveRecord::Base
   has_many :submittedreports, :class_name => 'RepairRequest'
   has_many :approvedreports, :class_name => 'RepairRequest'
   
-  accepts_nested_attributes_for :roles
+  def setup_default_role_for_new_users
+    if self.roles.empty?
+      self.roles << Role.first
+    end
+  end
 end
