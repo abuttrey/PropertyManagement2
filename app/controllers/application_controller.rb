@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     flash[:error] = "Access Denied!"
      redirect_to root_url  
   end
-  
+    
   private
 
   def current_user_session

@@ -1,8 +1,18 @@
 class RepairRequestsController < ApplicationController
+  
+  load_and_authorize_resource
+  
   # GET /repair_requests
   # GET /repair_requests.json
-  def index
-    @repair_requests = RepairRequest.all
+  def index   
+    manager = current_user && (current_user.has_role? :manager)
+    renter = current_user && (current_user.has_role? :renter) 
+    if manager    
+      @repair_requests = RepairRequest.all
+      
+    elsif renter       
+      @repair_requests = RepairRequest.where("submitter_id = ?", current_user.id)      
+    end   
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +23,7 @@ class RepairRequestsController < ApplicationController
   # GET /repair_requests/1
   # GET /repair_requests/1.json
   def show
+   
     @repair_request = RepairRequest.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +35,7 @@ class RepairRequestsController < ApplicationController
   # GET /repair_requests/new
   # GET /repair_requests/new.json
   def new
+      
     @repair_request = RepairRequest.new
 
     respond_to do |format|
@@ -34,13 +46,16 @@ class RepairRequestsController < ApplicationController
 
   # GET /repair_requests/1/edit
   def edit
+      
     @repair_request = RepairRequest.find(params[:id])
   end
 
   # POST /repair_requests
   # POST /repair_requests.json
-  def create
+  def create  
+    
     @repair_request = RepairRequest.new(params[:repair_request])
+    @repair_request.submitter_id = current_user.id
 
     respond_to do |format|
       if @repair_request.save
@@ -56,7 +71,28 @@ class RepairRequestsController < ApplicationController
   # PUT /repair_requests/1
   # PUT /repair_requests/1.json
   def update
+    
     @repair_request = RepairRequest.find(params[:id])
+   
+    respond_to do |format|
+      if @repair_request.update_attributes(params[:repair_request])
+        format.html { redirect_to @repair_request, notice: 'Repair request was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @repair_request.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  # PUT /repair_requests/1
+  # PUT /repair_requests/1.json
+  def respond
+    
+    @repair_request = RepairRequest.find(params[:id])
+    if @repair_request.respond_id.nil?
+      @repair_request.responder_id = current_user.id
+    end
 
     respond_to do |format|
       if @repair_request.update_attributes(params[:repair_request])

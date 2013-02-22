@@ -20,6 +20,15 @@
   <%= @repair_request.request_response %>
 </p>
 
+<p>
+  <b>Request Submitter:</b>
+  <%= @repair_request.submitter.username %>
+</p>
+
+<p>
+  <b>Request Responder:</b>
+  <%= @repair_request.responder.nil? ? "" : @repair_request.responder.username %>
+</p>
 
 <%= link_to 'Edit', edit_repair_request_path(@repair_request) %> |
 <%= link_to 'Back', repair_requests_path %>

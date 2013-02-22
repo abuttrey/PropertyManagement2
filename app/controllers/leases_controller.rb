@@ -1,9 +1,9 @@
-class LeasesController < ApplicationController
+class LeasesController < ApplicationController  
+  
   # GET /leases
   # GET /leases.json
   def index
-    @leases = Lease.all
-
+      @leases = Lease.all      
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @leases }
@@ -41,7 +41,8 @@ class LeasesController < ApplicationController
   # POST /leases.json
   def create
     @lease = Lease.new(params[:lease])
-
+    
+   
     respond_to do |format|
       if @lease.save
         format.html { redirect_to @lease, notice: 'Lease was successfully created.' }
@@ -57,6 +58,7 @@ class LeasesController < ApplicationController
   # PUT /leases/1.json
   def update
     @lease = Lease.find(params[:id])
+    
 
     respond_to do |format|
       if @lease.update_attributes(params[:lease])
