@@ -2,10 +2,9 @@ Propertymanagement::Application.routes.draw do
   resources :roles
 
 
-  resources :repair_requests do
-    
+  resources :repair_requests do    
     member do
-      get 'respond'
+      get 'close'
     end
   end
 

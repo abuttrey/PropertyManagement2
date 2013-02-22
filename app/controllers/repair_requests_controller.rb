@@ -6,7 +6,9 @@ class RepairRequestsController < ApplicationController
   # GET /repair_requests.json
   def index   
     manager = current_user && (current_user.has_role? :manager)
-    renter = current_user && (current_user.has_role? :renter) 
+    renter = current_user && (current_user.has_role? :renter)
+    
+        
     if manager    
       @repair_requests = RepairRequest.all
       
@@ -87,10 +89,11 @@ class RepairRequestsController < ApplicationController
   
   # PUT /repair_requests/1
   # PUT /repair_requests/1.json
-  def respond
+  def close
     
     @repair_request = RepairRequest.find(params[:id])
-    if @repair_request.respond_id.nil?
+    
+    if @repair_request.responder_id.nil?
       @repair_request.responder_id = current_user.id
     end
 

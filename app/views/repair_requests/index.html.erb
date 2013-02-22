@@ -19,7 +19,7 @@
     <td><%= repair_request.close_date %></td>
     <td><%= repair_request.request_details %></td>
     <td><%= repair_request.request_response %></td>
-    <td><%= repair_request.submitter.username %></td>
+    <td><%= repair_request.submitter.nil? ? "" : repair_request.responder.username %></td>
     <td><%= repair_request.responder.nil? ? "" : repair_request.responder.username %></td>
     <td>
     	<% if can? :read, repair_request %>
@@ -33,7 +33,7 @@
     </td>
      <td>
     	<% if can? :manage, repair_request %>
-    		<%= link_to 'Respond', respond_repair_request_path(repair_request) %>
+    		<%= link_to 'Close', close_repair_request_path(repair_request) %>
     	<% end %>
     </td>
     <td>

@@ -8,7 +8,8 @@ class Ability
       can :manage, :all
     elsif thisuser.has_role? :renter #renter
         can :manage, thisuser
-        can :index, [User]        
+        can :index, [User] 
+        can :manage, [RepairRequest]       
     else #guest
       can :index, [User]
       can :create, [User]

@@ -22,7 +22,7 @@
 
 <p>
   <b>Request Submitter:</b>
-  <%= @repair_request.submitter.username %>
+  <%= @repair_request.submitter.nil? ? "" : @repair_request.submitter.username %>
 </p>
 
 <p>
