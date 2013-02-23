@@ -19,29 +19,11 @@
     <td><%= repair_request.close_date %></td>
     <td><%= repair_request.request_details %></td>
     <td><%= repair_request.request_response %></td>
-    <td><%= repair_request.submitter.nil? ? "" : repair_request.responder.username %></td>
+    <td><%= repair_request.submitter.nil? ? "" : repair_request.submitter.username %></td>
     <td><%= repair_request.responder.nil? ? "" : repair_request.responder.username %></td>
-    <td>
-    	<% if can? :read, repair_request %>
-    		<%= link_to 'Show', repair_request %>
-    	<% end %>
-    </td>
-    <td>
-    	<% if can? :manage, repair_request %>
-    		<%= link_to 'Edit', edit_repair_request_path(repair_request) %>
-    	<% end %>
-    </td>
-     <td>
-    	<% if can? :manage, repair_request %>
-    		<%= link_to 'Close', close_repair_request_path(repair_request) %>
-    	<% end %>
-    </td>
-    <td>
-    	<% if can? :manage, repair_request %>
-    		<%= link_to 'Destroy', repair_request, method: :delete, data: { confirm: 'Are you sure?' } %>
-    	<% end %>
-    </td>
-    
+    <td><%= link_to 'Show', repair_request %></td>
+    <td><%= link_to 'Edit', edit_repair_request_path(repair_request) %></td>    
+    <td><%= link_to 'Destroy', repair_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>    
   </tr>
 <% end %>
 </table>

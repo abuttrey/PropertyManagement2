@@ -1,18 +1,15 @@
 class RepairRequestsController < ApplicationController
   
+ 
   load_and_authorize_resource
   
   # GET /repair_requests
   # GET /repair_requests.json
-  def index   
-    manager = current_user && (current_user.has_role? :manager)
-    renter = current_user && (current_user.has_role? :renter)
-    
-        
-    if manager    
+  def index    
+    if current_user.has_role? :manager    
       @repair_requests = RepairRequest.all
       
-    elsif renter       
+    elsif current_user.has_role? :renter       
       @repair_requests = RepairRequest.where("submitter_id = ?", current_user.id)      
     end   
 
@@ -54,8 +51,7 @@ class RepairRequestsController < ApplicationController
 
   # POST /repair_requests
   # POST /repair_requests.json
-  def create  
-    
+  def create    
     @repair_request = RepairRequest.new(params[:repair_request])
     @repair_request.submitter_id = current_user.id
 
@@ -75,6 +71,10 @@ class RepairRequestsController < ApplicationController
   def update
     
     @repair_request = RepairRequest.find(params[:id])
+    
+    if (@repair_request.responder_id.nil? && current_user.has_role?(:manager))
+      @repair_request.responder_id = current_user.id
+    end
    
     respond_to do |format|
       if @repair_request.update_attributes(params[:repair_request])
@@ -87,28 +87,7 @@ class RepairRequestsController < ApplicationController
     end
   end
   
-  # PUT /repair_requests/1
-  # PUT /repair_requests/1.json
-  def close
-    
-    @repair_request = RepairRequest.find(params[:id])
-    
-    if @repair_request.responder_id.nil?
-      @repair_request.responder_id = current_user.id
-    end
-
-    respond_to do |format|
-      if @repair_request.update_attributes(params[:repair_request])
-        format.html { redirect_to @repair_request, notice: 'Repair request was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @repair_request.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /repair_requests/1
+   # DELETE /repair_requests/1
   # DELETE /repair_requests/1.json
   def destroy
     @repair_request = RepairRequest.find(params[:id])

@@ -40,7 +40,9 @@
         	<%= current_user.nil? ?  "" : "Hi #{current_user.username}" %> 
          </div>
         <div id="flash_notice"><%= flash[:notice] %></div>
-        <div id="flash_bottom"></div>     
+        <div id="flash_bottom">
+        	<%= current_user.nil? ?  "" : "Email: #{current_user.email}" %> 
+        </div>     
         <!-- content div -->
         <div id="content">
             
