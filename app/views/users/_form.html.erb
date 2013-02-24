@@ -27,7 +27,7 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
-  	<% if current_user && (current_user.has_role? :manager)  %><!-- if user is logged and user is manager show checkboxes -->
+  	<% if can? :assign_roles, @user %> <!-- if user is logged and user is manager show checkboxes -->	
 		  <div class="field">
 		    <%= f.label :roles %><br />
 		    <% Role.find(:all).each do |r| %>
