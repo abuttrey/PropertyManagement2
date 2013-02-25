@@ -1,14 +1,13 @@
 class Ability
   include CanCan::Ability
   
-  alias_action :index, :show, :to => :read
-  alias_action :new, :to => :create
-  alias_action :edit, :to => :update
-  alias_action :create, :read, :update, :destroy, :to => :crud
-  alias_action :index, :show, :new, :edit, :create, :update, :destroy, :to => :restful
+  
+  
   
   def initialize(thisuser)
     thisuser ||= User.new
+    
+    alias_action :index, :show, :new, :edit, :create, :update, :destroy, :to => :restful
     
     if thisuser.has_role? :manager #manager
       can [:manage], :all

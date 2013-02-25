@@ -47,6 +47,10 @@ class RepairRequestsController < ApplicationController
   def edit
       
     @repair_request = RepairRequest.find(params[:id])
+    if (@repair_request.responder_id.nil? && current_user.has_role?(:manager)) 
+      #@repair_request.responder_id = current_user.id    
+      @repair_request.close_date = DateTime.now
+    end
   end
 
   # POST /repair_requests
@@ -72,9 +76,9 @@ class RepairRequestsController < ApplicationController
     
     @repair_request = RepairRequest.find(params[:id])
     
-    if (@repair_request.responder_id.nil? && current_user.has_role?(:manager))
+     if (@repair_request.responder_id.nil? && current_user.has_role?(:manager))
       @repair_request.responder_id = current_user.id
-    end
+     end
    
     respond_to do |format|
       if @repair_request.update_attributes(params[:repair_request])
