@@ -60,7 +60,9 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update    
     authorize! :assign_roles, @user if params[:user][:role_ids]
-    params[:user][:role_ids] ||= []    
+    if can? :assign_roles, @user
+     params[:user][:role_ids] ||= [] 
+    end   
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to root_url, notice: 'Profile Updated.' }
