@@ -42,6 +42,7 @@ class LeasesController < ApplicationController
   def create
     @lease = Lease.new(params[:lease])
     
+    
    
     respond_to do |format|
       if @lease.save

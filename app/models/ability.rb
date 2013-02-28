@@ -22,10 +22,11 @@ class Ability
         can :open_request, [RepairRequest] 
         cannot :close_request , [RepairRequest]
         cannot :manage, [Lease, Property, Unit, Payment] 
-        can: [:manage], [Payment], :user_id => thisuser.id  
+        can :manage, Payment, :user_id => thisuser.id  
     else #guest
       can :index, [User]
       can :create, [User]
+      can :create, [UserSession]
     end
     
   end

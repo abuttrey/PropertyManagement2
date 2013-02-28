@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   
+ 
+  
   attr_accessible :email, :password, :username, :crypted_password, :password_confirmation, :role_ids, :lease_ids
   
   before_create :setup_default_role_for_new_users
@@ -23,5 +25,6 @@ class User < ActiveRecord::Base
   has_many :submittedreports, :class_name => 'RepairRequest'
   has_many :approvedreports, :class_name => 'RepairRequest'
   
+ 
   
 end

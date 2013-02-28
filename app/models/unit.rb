@@ -4,4 +4,8 @@ class Unit < ActiveRecord::Base
   #associations
   belongs_to :property
   has_many :leases
+  
+  def full_name
+    "#{unit.property.name} - #{unit.name}"
+  end
 end

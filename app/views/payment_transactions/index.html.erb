@@ -1,0 +1,23 @@
+<h1>Listing payment_transactions</h1>
+
+<table>
+  <tr>
+    <th>Response</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payment_transactions.each do |payment_transaction| %>
+  <tr>
+    <td><%= payment_transaction.response %></td>
+    <td><%= link_to 'Show', payment_transaction %></td>
+    <td><%= link_to 'Edit', edit_payment_transaction_path(payment_transaction) %></td>
+    <td><%= link_to 'Destroy', payment_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Payment transaction', new_payment_transaction_path %>
