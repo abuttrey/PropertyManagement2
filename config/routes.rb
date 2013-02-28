@@ -1,4 +1,7 @@
 Propertymanagement::Application.routes.draw do
+  resources :payments
+
+
   resources :roles
 
 

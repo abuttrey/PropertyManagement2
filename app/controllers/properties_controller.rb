@@ -1,4 +1,7 @@
 class PropertiesController < ApplicationController
+  
+  load_and_authorize_resource
+  
   # GET /properties
   # GET /properties.json
   def index

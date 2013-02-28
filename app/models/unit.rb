@@ -1,5 +1,5 @@
 class Unit < ActiveRecord::Base
-  attr_accessible :name, :sq_ft, :property_ids
+  attr_accessible :name, :sq_ft, :property_id
   
   #associations
   belongs_to :property

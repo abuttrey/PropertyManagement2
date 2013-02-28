@@ -1,4 +1,7 @@
 class UserSessionsController < ApplicationController
+  
+  load_and_authorize_resource
+  
   # GET /user_sessions/new
   # GET /user_sessions/new.json
   def new

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ip_address: MyString
+  first_name: MyString
+  last_name: MyString
+  card_expires_on: 2013-02-28
+  amount: 1
+
+two:
+  ip_address: MyString
+  first_name: MyString
+  last_name: MyString
+  card_expires_on: 2013-02-28
+  amount: 1

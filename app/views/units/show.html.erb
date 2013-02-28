@@ -10,6 +10,9 @@
   <%= @unit.sq_ft %>
 </p>
 
-
+<p>
+  <b>Property:</b>
+  <%= @unit.property.name %>
+</p>
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>

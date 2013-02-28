@@ -23,12 +23,19 @@
         <div id="nav"> <!-- Navigation Div -->
             <ul>  
             	<li><%= link_to 'Home', root_path %></li>
-            	<% if current_user %>
-	            	<!-- <li><%= link_to 'Edit Profile', edit_profile_path(:user) %></li> -->
-              		<li><%= link_to 'Logout', logout_path %></li>               		
+            	
+            	<% if current_user && (current_user.has_role?(:manager))%>	            	
+              		<li><%= link_to 'Logout', logout_path %></li>
+              		<li><%= link_to 'Properties', properties_path %></li>
+              		<li><%= link_to 'Units', units_path %></li>               		
 					<li><%= link_to 'Leases', leases_path %></li>
-					<li><%= link_to 'Repair Requests', repair_requests_path %></li>             	
-	            <% else %>	 
+					<li><%= link_to 'Repair Requests', repair_requests_path %></li>
+					<li><%= link_to 'Payments', payments_path %></li>					             	
+	            <% elsif current_user && (current_user.has_role?(:renter))%>
+	            	<li><%= link_to 'Logout', logout_path %></li>              		         		
+					<li><%= link_to 'Payments', payments_path %></li>
+					<li><%= link_to 'Repair Requests', repair_requests_path %></li>	
+	            <%else%>	 
               		<li><%= link_to 'Register', register_path %></li>
               		<li><%= link_to 'Login', login_path %></li>
               	<% end %>              

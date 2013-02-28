@@ -3,7 +3,8 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Sq ft</th>
+    <th>Sq ft</th>   
+    <th>Property</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= unit.name %></td>
     <td><%= unit.sq_ft %></td>
+    <td><%= unit.property.name %></td>
     <td><%= link_to 'Show', unit %></td>
     <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
     <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
