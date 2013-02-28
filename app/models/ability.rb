@@ -1,8 +1,5 @@
 class Ability
-  include CanCan::Ability
-  
-  
-  
+  include CanCan::Ability  
   
   def initialize(thisuser)
     thisuser ||= User.new
@@ -23,7 +20,9 @@ class Ability
         can :manage, RepairRequest ,  :submitter_id => thisuser.id 
         cannot :assign_roles, [User]
         can :open_request, [RepairRequest] 
-        cannot :close_request , [RepairRequest]    
+        cannot :close_request , [RepairRequest]
+        cannot :manage, [Lease, Property, Unit, Payment] 
+        can: [:manage], [Payment], :user_id => thisuser.id  
     else #guest
       can :index, [User]
       can :create, [User]
