@@ -33,8 +33,8 @@
  
 <div class="field">
     <%= f.label :renters %><br />
-   	<%= select_tag 'lease[user_ids][]',options_from_collection_for_select(User.find(:all), :id, :username),{ :multiple => true, :size => 5 } %> 	
-</div> -->
+   	<%= select_tag 'lease[user_ids][]',options_from_collection_for_select(User.find(:all), :id, :username, params[:user_id]),{ :multiple => true, :size => 5 } %> 	
+</div>
 
   <div class="actions">
     <%= f.submit %>
