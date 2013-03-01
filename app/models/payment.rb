@@ -3,5 +3,5 @@ class Payment < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :lease
-  has_many :transactions, :Class_name => 'PaymentTransaction'
+  has_many :transactions, :class_name => 'PaymentTransaction'
 end

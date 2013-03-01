@@ -69,7 +69,7 @@ CUSTOM CSS
 
 * { padding: 0; margin: 0; }
 
-ul#show_roles{
+ul#show_roles, ul#show_renters{
 	list-style: disc inside
 }
 

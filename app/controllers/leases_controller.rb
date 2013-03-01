@@ -41,15 +41,15 @@ class LeasesController < ApplicationController
   # POST /leases.json
   def create
     
-    temp = params[:lease][:renters]   
+    #temp = params[:lease][:renters]   
     
-    params[:lease][:renters]= []
+    #params[:lease][:renters]= []
     
     @lease = Lease.new(params[:lease])
     
-    temp.each do |r|
-      @lease.renters << User.find(r)
-    end
+    #temp.each do |r|
+     # @lease.renters << User.find(r)
+    #end
        
     respond_to do |format|
       if @lease.save

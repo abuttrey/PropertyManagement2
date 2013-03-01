@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   
   #associations
   has_and_belongs_to_many :roles
-  belongs_to :lease
+  has_and_belongs_to_many :leases
   has_many :submittedreports, :class_name => 'RepairRequest'
   has_many :approvedreports, :class_name => 'RepairRequest'
   

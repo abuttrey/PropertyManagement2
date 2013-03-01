@@ -15,6 +15,16 @@
   <%= @lease.rent %>
 </p>
 
+<p>
+  <b>Unit:</b>
+  <%= @lease.unit.full_name %>
+</p>
 
+<ul id="show_renters"> 
+<lh>Renters:</lh> 
+	<% @lease.users.each do |u| %>
+		<li> <%= u.username %> </li>
+	<% end %>
+</ul>
 <%= link_to 'Edit', edit_lease_path(@lease) %> |
 <%= link_to 'Back', leases_path %>
