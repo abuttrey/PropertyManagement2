@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   end
   
   rescue_from ActiveRecord::RecordNotFound do |ex|
-    flash[:error] = "Access Denied!"
-     redirect_to root_url  
+   flash[:error] = "Access Denied!"
+   redirect_to root_url  
   end
     
   private

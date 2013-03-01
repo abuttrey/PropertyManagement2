@@ -40,10 +40,17 @@ class LeasesController < ApplicationController
   # POST /leases
   # POST /leases.json
   def create
+    
+    temp = params[:lease][:renters]   
+    
+    params[:lease][:renters]= []
+    
     @lease = Lease.new(params[:lease])
     
-    
-   
+    temp.each do |r|
+      @lease.renters << User.find(r)
+    end
+       
     respond_to do |format|
       if @lease.save
         format.html { redirect_to @lease, notice: 'Lease was successfully created.' }

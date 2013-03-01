@@ -27,16 +27,14 @@
     
   <div class="field">
     <%= f.label :unit %><br />
-    <%= f.collection_select :unit_id, Unit.all.collect, :id, :name , :prompt => "Select a Unit" %>
+    <%= f.collection_select :unit_id, Unit.all.collect, :id, :full_name , :prompt => "Select a Unit" %>
   </div>
   
-   <div class="field">
-    <%= f.label :renter %><br />
-    <%= collection_select(:lease, :renters, User.all.collect, :id, :username) %>
-   
-   </div> 
-   
-  
+ 
+  <div class="field">
+    <%= f.label :renters %><br />
+	<%= select_tag 'lease[renters][]',options_from_collection_for_select(User.find(:all), :id, :username),{ :multiple => true, :size => 5 } %> 
+  </div>
   
   <div class="actions">
     <%= f.submit %>

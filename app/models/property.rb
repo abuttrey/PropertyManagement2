@@ -3,4 +3,6 @@ class Property < ActiveRecord::Base
   
   #associations
   has_many :units
+  
+
 end
