@@ -6,10 +6,20 @@ class LeasesController < ApplicationController
      if current_user.has_role? :manager    
       @leases = Lease.all
       
-    elsif current_user.has_role? :renter       
-      #@leases = Lease.where("current_user.id in ?", [3,4,5])
-      #@leases = Lease.find(:all, :conditions => ['user.id = :u',:u=>current_user.id],:joins => [:users], )
-      @leases ||= []     
+    elsif current_user.has_role? :renter    
+      
+      @leases = []
+      
+      Lease.find(:all).each do |l|
+        l.users.each do |u| 
+          if u.id == current_user.id 
+            @leases.push(l)          
+          end
+        end
+      end
+         
+          
+      #@leases ||= []     
     end   
     
     respond_to do |format|
