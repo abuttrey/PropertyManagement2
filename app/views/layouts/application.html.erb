@@ -34,6 +34,7 @@
 	            <% elsif current_user && (current_user.has_role?(:renter))%>
 	            	<li><%= link_to 'Logout', logout_path %></li>              		         		
 					<li><%= link_to 'Payments', payments_path %></li>
+					<li><%= link_to 'Leases', leases_path %></li>
 					<li><%= link_to 'Repair Requests', repair_requests_path %></li>	
 	            <%else%>	 
               		<li><%= link_to 'Register', register_path %></li>

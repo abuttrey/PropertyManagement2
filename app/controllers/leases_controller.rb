@@ -3,7 +3,15 @@ class LeasesController < ApplicationController
   # GET /leases
   # GET /leases.json
   def index
-      @leases = Lease.all      
+     if current_user.has_role? :manager    
+      @leases = Lease.all
+      
+    elsif current_user.has_role? :renter       
+      #@leases = Lease.where("current_user.id in ?", [3,4,5])
+      #@leases = Lease.find(:all, :conditions => ['user.id = :u',:u=>current_user.id],:joins => [:users], )
+      @leases ||= []     
+    end   
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @leases }

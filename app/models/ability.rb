@@ -4,6 +4,12 @@ class Ability
   def initialize(thisuser)
     thisuser ||= User.new
     
+    #
+    #
+    # Fix this mess
+    #
+    #
+    
     alias_action :index, :show, :new, :edit, :create, :update, :destroy, :to => :restful
     
     if thisuser.has_role? :manager #manager
@@ -22,7 +28,10 @@ class Ability
         can :open_request, [RepairRequest] 
         cannot :close_request , [RepairRequest]
         cannot :manage, [Lease, Property, Unit, Payment] 
-        can :manage, Payment, :user_id => thisuser.id  
+        can :manage, Payment, :user_id => thisuser.id
+        can :destroy, [UserSession]
+        cannot :manage, [Lease]
+        #can :read, [Lease], :user_ids => thisuser.id    
     else #guest
       can :index, [User]
       can :create, [User]

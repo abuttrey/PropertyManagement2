@@ -41,6 +41,8 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = Payment.new(params[:payment])
+    @payment.ip_address = request.remote_ip
+    @payment.user = current_user
 
     respond_to do |format|
       if @payment.save
