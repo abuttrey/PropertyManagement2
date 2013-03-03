@@ -10,10 +10,11 @@ class Payment < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :lease
-  has_many :transactions, :class_name => 'PaymentTransaction'
+  has_many :transactions, :class_name => :PaymentTransaction
   
   def make_transaction
     response = GATEWAY.purchase((amount*100),credit_card)
+    transactions.create(:response => response)
     response.success?
   end
   
