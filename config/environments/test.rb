@@ -34,4 +34,11 @@ Propertymanagement::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # Set active merchant mode
+  ActiveMerchant::Billing::Base.mode = :test
+  
+  # Construct active merchant gateway
+  ::GATEWAY = ActiveMerchant::Billing::FakeGateway.new
+  
 end

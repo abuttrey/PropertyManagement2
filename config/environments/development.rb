@@ -33,9 +33,16 @@ Propertymanagement::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
-  
+  config.assets.debug = true  
    
-  #
+  # Set active merchant mode
+  ActiveMerchant::Billing::Base.mode = :test
   
+  # Construct active merchant gateway
+  ::GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new({
+    :login    => '5f8Ygta6D4UP',
+    :password => '464sH68yF94w8gGR'
+  })
+  
+  #
 end

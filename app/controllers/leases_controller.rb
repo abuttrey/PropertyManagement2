@@ -6,14 +6,14 @@ class LeasesController < ApplicationController
      if current_user.has_role? :manager    
       @leases = Lease.all
       
-    elsif current_user.has_role? :renter    
-      
+    elsif current_user.has_role? :renter 
+         
       @leases = []
       
-      Lease.find(:all).each do |l|
-        l.users.each do |u| 
-          if u.id == current_user.id 
-            @leases.push(l)          
+      Lease.find(:all).each do |lease|
+        lease.users.each do |user| 
+          if user.id == current_user.id 
+            @leases.push(lease)          
           end
         end
       end
