@@ -8,15 +8,20 @@ class LeasesController < ApplicationController
       
     elsif current_user.has_role? :renter 
          
-      @leases = []
+      @leases = current_user.leases
       
-      Lease.find(:all).each do |lease|
-        lease.users.each do |user| 
-          if user.id == current_user.id 
-            @leases.push(lease)          
-          end
-        end
-      end
+      logger.fatal "Hello #{current_user}"
+       
+      
+      #@leases = []
+      
+      #Lease.find(:all).each do |lease|
+        #lease.users.each do |user| 
+          #if user.id == current_user.id 
+            #@leases.push(lease)          
+          #end
+        #end
+      #end
          
           
       #@leases ||= []     

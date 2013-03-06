@@ -34,6 +34,10 @@ Propertymanagement::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true  
+  
+  #debug
+  config.log_level = :debug
+  #Rails.logger = Logger.new(STDOUT)
    
   # Set active merchant mode
   ActiveMerchant::Billing::Base.mode = :test
