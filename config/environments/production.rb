@@ -69,7 +69,11 @@ Propertymanagement::Application.configure do
   ActiveMerchant::Billing::Base.mode = :test
   
   # Construct active merchant gateway
-  ::GATEWAY = ActiveMerchant::Billing::FakeGateway.new
+  # ::GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new({
+  #  :login    => '5f8Ygta6D4UP',
+  #  :password => '464sH68yF94w8gGR'
+  # })
+  ::GATEWAY = Time.now
   
   
 end
