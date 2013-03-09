@@ -7,7 +7,7 @@ class PaymentsController < ApplicationController
   # GET /payments.json
   def index
    if current_user.has_role? :manager    
-      @payments = Lease.all
+      @payments = Payment.all
       
    elsif current_user.has_role? :renter 
          

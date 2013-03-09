@@ -38,6 +38,7 @@ Propertymanagement::Application.routes.draw do
   
   match 'users', :to => 'users#index'
 
+ match "*path" => 'error#handle404'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

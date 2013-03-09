@@ -7,16 +7,19 @@
     <th>Last name</th>
     <th>Card expires on</th>
     <th>Amount</th>
+    <th>For User</th>
     <th></th>   
   </tr>
 
 <% @payments.each do |payment| %>
+<% logger.fatal "#{payment}" %>
   <tr>
     <td><%= payment.ip_address %></td>
     <td><%= payment.first_name %></td>
     <td><%= payment.last_name %></td>
-    <td><%= payment.card_expires_on %></td>
+    <td><%= payment.card_expires_on %></td>    
     <td><%= payment.amount %></td>
+    <td><%= payment.user.username %></td>
     <td><%= link_to 'Show', payment %></td>    
   </tr>
 <% end %>

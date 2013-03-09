@@ -22,7 +22,7 @@ class LeasesController < ApplicationController
   def show
     
     @lease = Lease.find(params[:id])
-    logger.fatal "#{params[:user]}"
+    #logger.fatal "#{params[:user]}"
     #authorize! :read, @lease if @lease.users.includes( :user_id => current_user.id)
     respond_to do |format|
       format.html # show.html.erb
@@ -33,6 +33,7 @@ class LeasesController < ApplicationController
   # GET /leases/new
   # GET /leases/new.json
   def new
+    authorize! :create, @lease
     @lease = Lease.new
 
     respond_to do |format|

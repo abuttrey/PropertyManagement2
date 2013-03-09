@@ -36,5 +36,6 @@
 </table>
 
 <br />
-
-<%= link_to 'New Lease', new_lease_path %>
+<% if can? :create, @lease %>
+    <%= link_to 'New Lease', new_lease_path %>
+<% end %>

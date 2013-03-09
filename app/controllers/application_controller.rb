@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
    flash[:error] = "Some Error!"
    redirect_to root_url  
   end
+  
+ 
+   
+   
     
   private
 
