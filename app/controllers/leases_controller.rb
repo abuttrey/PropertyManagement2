@@ -1,5 +1,7 @@
 class LeasesController < ApplicationController  
   
+   load_and_authorize_resource
+  
   # GET /leases
   # GET /leases.json
   def index

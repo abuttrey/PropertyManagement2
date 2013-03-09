@@ -19,12 +19,12 @@
     	<% end %>
     </td>
     <td>
-    	<% if can? :manage, user %>
+    	<% if can? :restful, user %>
     		<%= link_to 'Edit', edit_user_path(user) %>
     	<% end %>
     </td>
     <td>
-    	<% if can? :manage, user %>
+    	<% if can? :restful, user %>
     		<%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
     	<% end %>
     </td>

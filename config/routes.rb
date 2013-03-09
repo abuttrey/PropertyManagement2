@@ -5,11 +5,7 @@ Propertymanagement::Application.routes.draw do
   resources :roles
 
 
-  resources :repair_requests do    
-    member do
-      get 'close'
-    end
-  end
+  resources :repair_requests
 
 
   resources :leases
