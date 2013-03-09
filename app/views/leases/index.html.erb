@@ -18,10 +18,12 @@
     <td><%= lease.end_date %></td>
     <td><%= lease.rent %></td>
     <td><%= lease.unit.full_name %></td>
-    <td></td>
+    <td></td>   
     <td><%= link_to 'Show', lease %></td>
-    <td><%= link_to 'Edit', edit_lease_path(lease) %></td>
-    <td><%= link_to 'Destroy', lease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if can?  :restful, @lease %>
+        <td><%= link_to 'Edit', edit_lease_path(lease) %></td>
+        <td><%= link_to 'Destroy', lease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
   <% lease.users.each do |u| %>
   <tr>

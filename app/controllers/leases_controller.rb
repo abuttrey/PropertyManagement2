@@ -5,28 +5,10 @@ class LeasesController < ApplicationController
   # GET /leases
   # GET /leases.json
   def index
-     if current_user.has_role? :manager    
-      @leases = Lease.all
-      
-    elsif current_user.has_role? :renter 
-         
-      @leases = current_user.leases
-      
-      logger.fatal "Hello #{current_user}"
-       
-      
-      #@leases = []
-      
-      #Lease.find(:all).each do |lease|
-        #lease.users.each do |user| 
-          #if user.id == current_user.id 
-            #@leases.push(lease)          
-          #end
-        #end
-      #end
-         
-          
-      #@leases ||= []     
+    if current_user.has_role? :manager    
+      @leases = Lease.all      
+    elsif current_user.has_role? :renter          
+      @leases = current_user.leases    
     end   
     
     respond_to do |format|
@@ -38,8 +20,10 @@ class LeasesController < ApplicationController
   # GET /leases/1
   # GET /leases/1.json
   def show
+    
     @lease = Lease.find(params[:id])
-
+    logger.fatal "#{params[:user]}"
+    #authorize! :read, @lease if @lease.users.includes( :user_id => current_user.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @lease }

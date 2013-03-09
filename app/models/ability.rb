@@ -33,8 +33,14 @@ class Ability
         cannot :restful, [Lease, Property, Unit, Payment] 
         can :restful, Payment, :user_id => thisuser.id
         can :destroy, [UserSession]
-        cannot :restful, [Lease]
-        #can :read, [Lease], :user_ids => thisuser.id    
+        cannot :read, [Lease] 
+        can :read, Lease, :users => {:id => thisuser.id}
+            
+        
+        
+        
+                                                    
+                       
     else #guest
       can :index, [User]
       can :create, [User]
