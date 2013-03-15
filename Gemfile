@@ -8,6 +8,7 @@ gem 'rails', '3.2.11'
 gem 'sqlite3',:group => :development
 gem 'mysql2', :group => :production
 gem 'quiet_assets', :group => :development
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
