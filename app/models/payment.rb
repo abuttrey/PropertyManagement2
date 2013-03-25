@@ -4,7 +4,8 @@ class Payment < ActiveRecord::Base
   #add attribute
   attr_accessor  :card_number, :cvv_code
   
-  validates :amount, :first_name, :last_name, :card_number, :cvv_code, :presence => true
+  
+  validates  :user_id,  :amount, :first_name, :last_name, :card_number, :cvv_code, :presence => true
   
   validate :validate_card, :on => :create
   

@@ -12,23 +12,24 @@
   <% end %>
 
    <div class="field">
-    <%= f.label :amount %><br />
-    <%= f.number_field :amount %>
+    <%= f.label :lease, 'Lease to Pay' %><br />
+    <%= f.collection_select :amount, @user.leases, :rent, :show_me_the_money , :prompt => "Select a Lease" %>
+    
   </div>
   
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, :value=>@user.username %>
   </div>
   
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, :value=>@user.username %>
   </div>
   
    <div class="field">
     <%= f.label :card_number %><br />
-    <%= f.number_field :card_number %>
+    <%= f.number_field :card_number, :value => '4111111111111111' %>
   </div>
   
   <div class="field">
@@ -38,7 +39,7 @@
   
   <div class="field">
     <%= f.label :cvv_code %><br />
-    <%= f.number_field :cvv_code %>
+    <%= f.number_field :cvv_code, :value=>'333' %>
   </div>
   
   <div class="actions">

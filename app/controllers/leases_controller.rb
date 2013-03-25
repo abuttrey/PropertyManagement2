@@ -7,7 +7,7 @@ class LeasesController < ApplicationController
   def index
     if current_user.has_role? :manager    
       @leases = Lease.all      
-    elsif current_user.has_role? :renter          
+    else          
       @leases = current_user.leases    
     end   
     

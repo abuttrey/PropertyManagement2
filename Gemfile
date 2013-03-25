@@ -44,3 +44,4 @@ gem 'cancan'
 gem 'activemerchant'
 gem 'mysql2', :group => :production
 gem 'quiet_assets', :group => :development
+gem 'thin'

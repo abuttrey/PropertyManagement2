@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
    if current_user.has_role? :manager    
       @payments = Payment.all
       
-   elsif current_user.has_role? :renter 
+   else
          
       @payments = current_user.payments
    end
@@ -35,7 +35,7 @@ class PaymentsController < ApplicationController
   # GET /payments/new.json
   def new
     @payment = Payment.new
-
+    @user = current_user
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @payment }
@@ -46,9 +46,12 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
+    @user = current_user
     @payment = Payment.new(params[:payment])
     @payment.ip_address = request.remote_ip
     @payment.user = current_user
+
+    logger.fatal "FATAL INFO #{@payment.inspect}"
 
     respond_to do |format|
       if @payment.save
